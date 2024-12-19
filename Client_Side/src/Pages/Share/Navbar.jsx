@@ -6,8 +6,11 @@ import { LuUser } from "react-icons/lu";
 import { RxCross2 } from "react-icons/rx";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { MdArrowForwardIos } from "react-icons/md";
+import useAuth from "../../Utils/Hooks/useAuth";
+import { MdDashboard } from "react-icons/md";
+import ImageDropdown from "../../Components/ImageDropdown";
 const Navbar = () => {
-  const { user } = false;
+  const { user } = useAuth();
   const [nav, setNav] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();

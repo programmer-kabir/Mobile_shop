@@ -6,8 +6,13 @@ import { FaGithub, FaSpinner } from "react-icons/fa";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useForm } from "react-hook-form";
 import { PiCloudArrowDownBold } from "react-icons/pi";
-import {Link} from 'react-router-dom'
+import {Link, useLocation, useNavigate} from 'react-router-dom'
+import {toast } from 'react-toastify';
+import useAuth from "../../Utils/Hooks/useAuth";
+import { SaveUser } from "../../Utils/Apis/SaveUser";
 const SignUp = () => {
+  const { RegisterUser, updateUserProfile, signInWithGoogle } = useAuth();
+
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
@@ -32,9 +37,61 @@ const SignUp = () => {
     formState: { errors },
     watch,
   } = useForm();
-  const onSubmit = data =>{
-    console.log(data);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+   const onSubmit = data =>{
+    if (!imagePreview) {
+      toast.error("Image Not Find");
+      return;
+    }
+    setLoading(true);
+    const formData = new FormData();
+    formData.append("image", imagePreview);
+    fetch(import.meta.env.VITE_IMAGEURL, {
+      method: "POST",
+      body: formData,
+    })
+    .then((res) => res.json())
+    .then((image) => {
+      const photo = image?.data?.display_url;
+      RegisterUser(data.email, data.password)
+      .then(result =>{
+        const loggedUser = result.user;
+        updateUserProfile(data.name, photo)
+        .then((result) => {
+          SaveUser(loggedUser);
+          setLoading(false);
+          toast.success("User Create Successfully");
+          navigate('/')
+        })
+        .catch((error) => {
+          setLoading(false);
+          toast.error(error.message);
+        });
+      })
+      .catch((error) =>{
+        setLoading(false);
+            toast.error(error.message);
+      })
+    })
+
   }
+  const handleGoogleSignIn = () => {
+    setLoading(true);
+    signInWithGoogle()
+      .then((result) => {
+        setLoading(false);
+        toast.success("User login successfully")
+        SaveUser(result.user)
+        navigate(from, { replace: true });
+      })
+      .catch((err) => {
+        setLoading(false)
+        // console.log(err.message);
+        toast.error(err.message);
+      });
+  };
   return (
     <Container>
       <section className="flex mt-2 p-2 border rounded-md">
@@ -57,7 +114,7 @@ const SignUp = () => {
               <div className="w-full lg:w-1/2 mb-2 lg:mb-0">
                 <button
                   type="button"
-                  // onClick={handleGoogleSignIn}
+                  onClick={handleGoogleSignIn}
                   className="w-full flex justify-center items-center gap-2 bg-white text-sm text-gray-600 p-2 rounded-md hover:bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-200 transition-colors duration-300"
                 >
                   <FcGoogle size={20} />

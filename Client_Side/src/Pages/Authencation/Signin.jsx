@@ -5,15 +5,22 @@ import { FcGoogle } from "react-icons/fc";
 import { FaGithub, FaSpinner } from "react-icons/fa";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useForm } from "react-hook-form";
-import {Link} from 'react-router-dom';
+import {Link, useLocation, useNavigate} from 'react-router-dom';
+import useAuth from '../../Utils/Hooks/useAuth';
+import { toast } from 'react-toastify';
+import { SaveUser } from '../../Utils/Apis/SaveUser';
 
 const Signin = () => {
+  const { SingInUser, signInWithGoogle } = useAuth();
     const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
   
     const togglePasswordVisibility = () => {
       setShowPassword((prevState) => !prevState);
     };
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
       const {
         register,
         handleSubmit,
@@ -21,8 +28,39 @@ const Signin = () => {
         watch,
       } = useForm();
     const onSubmit = data =>{
-      console.log(data);
-    }
+      setLoading(true);
+      SingInUser(data.email, data.password)
+      .then((result) => {
+        setLoading(false)
+  toast.success("Login in Successfully")
+        navigate(from, { replace: true });
+      })
+      .catch((error)=>{
+        if(error.message=="Firebase: Error (auth/invalid-credential)."){
+          toast.error("Email Not Found")
+        }
+        else{
+  
+          toast.error(error.message)
+        }
+        setLoading(false)
+      })
+    };
+    const handleGoogleSignIn = () => {
+      setLoading(true);
+      signInWithGoogle()
+        .then((result) => {
+          setLoading(false);
+          toast.success("User login successfully")
+        SaveUser(result.user)
+          navigate(from, { replace: true });
+        })
+        .catch((err) => {
+          setLoading(false)
+          // console.log(err.message);
+          toast.error(err.message);
+        });
+    };
   return (
     <Container>
       <section className="flex flex-row-reverse mt-2 p-2 border rounded-md">
@@ -45,7 +83,7 @@ const Signin = () => {
               
                 <button
                   type="button"
-                  // onClick={handleGoogleSignIn}
+                  onClick={handleGoogleSignIn}
                   className="w-full flex justify-center items-center gap-2 bg-white text-sm text-gray-600 p-2 rounded-md hover:bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-200 transition-colors duration-300"
                 >
                   <FcGoogle size={20} />
