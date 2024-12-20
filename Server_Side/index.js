@@ -43,6 +43,13 @@ async function run() {
   try {
     // MongoDb Apis
     const usersCollection = client.db("MobileShop").collection("users");
+    const productsCollection = client.db("MobileShop").collection("products");
+
+    // products
+    app.get("/products", async (req, res) => {
+      const result = await productsCollection.find().toArray();
+      res.send(result);
+    });
 
     // JWT
     app.post("/jwt", async (req, res) => {
@@ -68,8 +75,8 @@ async function run() {
       res.send(user);
     });
 
-     // Get admin
-     app.get("/users/admin/:email", verifyJWT, async (req, res) => {
+    // Get admin
+    app.get("/users/admin/:email", verifyJWT, async (req, res) => {
       const email = req.params.email;
 
       if (req.decoded.email !== email) {
@@ -80,8 +87,8 @@ async function run() {
       const result = { admin: user?.status === "admin" };
       res.send(result);
     });
-     // Get Seller
-     app.get("/users/sellers/:email", verifyJWT, async (req, res) => {
+    // Get Seller
+    app.get("/users/sellers/:email", verifyJWT, async (req, res) => {
       const email = req.params.email;
 
       if (req.decoded.email !== email) {
@@ -92,8 +99,8 @@ async function run() {
       const result = { Sellers: user?.status === "Sellers" };
       res.send(result);
     });
-     // Get Buyer
-     app.get("/users/buyers/:email", verifyJWT, async (req, res) => {
+    // Get Buyer
+    app.get("/users/buyers/:email", verifyJWT, async (req, res) => {
       const email = req.params.email;
 
       if (req.decoded.email !== email) {

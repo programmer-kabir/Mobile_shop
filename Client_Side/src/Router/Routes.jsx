@@ -13,6 +13,7 @@ import PrivateRoute from "./PrivetRoute";
 import AdminRoute from "./AdminRoutes";
 import SellerRoutes from "./SellerRoutes";
 import AddNewProducts from "../Pages/Dashboard/Seller/AddNewProducts";
+import Products from "../Pages/Products";
 
 export const routes = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ export const routes = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/product",
+        element: <Products />,
       },
       {
         path: "/signup",

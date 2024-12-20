@@ -52,7 +52,7 @@ const Navbar = () => {
             {/* Imports Link */}
             <div className="md:flex hidden items-center space-x-5 font-medium">
               <NavLink to='/'>Home</NavLink>
-              <NavLink>Products</NavLink>
+              <NavLink to='/product'>Products</NavLink>
               <NavLink>About</NavLink>
               <NavLink>Contact </NavLink>
             </div>

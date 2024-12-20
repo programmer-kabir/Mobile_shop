@@ -1,0 +1,355 @@
+[
+  {
+    "brand": "Samsung",
+    "name": "Galaxy S24 Ultra",
+    "description": "Flagship smartphone with advanced camera and 5G capabilities, offering a stunning design and exceptional performance for photography and multitasking.",
+    "price": 1199,
+    "category": "smartphone",
+    "stock": "5",
+    "image": "https://i.ibb.co.com/cC21d5C/THUMB-Galaxy-S24ultra-MAThumb-1440x960.jpg",
+    "sellerDetails": [
+      {
+        "name": "kabir",
+        "photo": "https://i.ibb.co.com/j68wxNh/pexels-linkedin-2182970.jpg",
+        "email": "kabir@gmail.com"
+      }
+    ]
+  },
+  {
+    "brand": "Samsung",
+    "name": "Galaxy M14",
+    "description": "Budget-friendly phone with a large display, solid performance, and reliable features for everyday use.",
+    "price": 199,
+    "category": "smartphone",
+    "stock": "10",
+    "image": "https://i.ibb.co.com/qscBY9W/bd-galaxy-m14-5g-sm-m146-sm-m146bzbhbck-539113310.png",
+    "sellerDetails": [
+      {
+        "name": "kabir",
+        "photo": "https://i.ibb.co.com/j68wxNh/pexels-linkedin-2182970.jpg",
+        "email": "kabir@gmail.com"
+      }
+    ]
+  },
+  {
+    "brand": "Samsung",
+    "name": "Galaxy Z Fold 5",
+    "description": "Premium foldable phone with cutting-edge design, multitasking capabilities, and a revolutionary display for tech enthusiasts.",
+    "price": 1799,
+    "category": "smartphone",
+    "stock": "8",
+    "image": "https://i.ibb.co.com/NSkZ4yV/galaxy-z-fold5-highlights-kv-a.jpg",
+    "sellerDetails": [
+      {
+        "name": "kabir",
+        "photo": "https://i.ibb.co.com/j68wxNh/pexels-linkedin-2182970.jpg",
+        "email": "kabir@gmail.com"
+      }
+    ]
+  },
+  {
+    "brand": "Redmi",
+    "name": "Redmi Note 13 Pro",
+    "description": "High-performance phone with a sleek design, powerful processor, and advanced camera capabilities for photo enthusiasts.",
+    "price": 349,
+    "category": "smartphone",
+
+    "stock": "54",
+    "image": "https://i.ibb.co.com/QnySgRz/Redmi-Note-13-Pro-5-G.jpg",
+    "sellerDetails": [
+      {
+        "name": "kabir",
+        "photo": "https://i.ibb.co.com/j68wxNh/pexels-linkedin-2182970.jpg",
+        "email": "kabir@gmail.com"
+      }
+    ]
+  },
+  {
+    "brand": "Redmi",
+    "name": "Redmi Note 10 Pro",
+    "description": "Popular mid-range smartphone featuring a 108MP camera, AMOLED display, and impressive battery life for an excellent multimedia experience.",
+    "price": 299,
+    "category": "smartphone",
+    "stock": "11",
+    "image": "https://i.ibb.co.com/MshXxNC/Redmi-Note-10-Pro.jpg",
+    "sellerDetails": [
+      {
+        "name": "kabir",
+        "photo": "https://i.ibb.co.com/j68wxNh/pexels-linkedin-2182970.jpg",
+        "email": "kabir@gmail.com"
+      }
+    ]
+  },
+  {
+    "brand": "Redmi",
+    "name": "Redmi A2 Plus",
+    "description": "Entry-level smartphone with essential features for everyday use, designed for affordability without compromising functionality.",
+    "price": 99,
+    "category": "smartphone",
+    "stock": "15",
+    "image": "https://i.ibb.co.com/44tjjKf/Redmi-A2-Plus.jpg",
+    "sellerDetails": [
+      {
+        "name": "kabir",
+        "photo": "https://i.ibb.co.com/j68wxNh/pexels-linkedin-2182970.jpg",
+        "email": "kabir@gmail.com"
+      }
+    ]
+  },
+  {
+    "brand": "Realme",
+    "name": "Realme C53",
+    "description": "Affordable smartphone with decent performance, a long-lasting battery, and a sleek build for everyday convenience.",
+    "price": 129,
+    "category": "smartphone",
+    "stock": "3",
+    "image": "https://i.ibb.co.com/X5KQykK/Realme-C53-r.jpg",
+    "sellerDetails": [
+      {
+        "name": "kabir",
+        "photo": "https://i.ibb.co.com/j68wxNh/pexels-linkedin-2182970.jpg",
+        "email": "kabir@gmail.com"
+      }
+    ]
+  },
+  {
+    "brand": "Realme",
+    "name": "Realme GT 3",
+    "description": "Flagship phone with a futuristic design, high-speed charging, and top-notch performance for power users and gamers.",
+    "price": 599,
+    "category": "smartphone",
+    "stock": "1",
+    "image": "https://i.ibb.co.com/GTRFBYn/Realme-GT-Neo-3.jpg",
+    "sellerDetails": [
+      {
+        "name": "kabir",
+        "photo": "https://i.ibb.co.com/j68wxNh/pexels-linkedin-2182970.jpg",
+        "email": "kabir@gmail.com"
+      }
+    ]
+  },
+  {
+    "brand": "Realme",
+    "name": "Realme 12 Pro+",
+    "description": "Premium smartphone with a 200MP ultra-clear camera, AMOLED display, and lightning-fast charging for an unparalleled user experience.",
+    "price": 449,
+    "category": "smartphone",
+    "stock": "5",
+    "image": "https://i.ibb.co.com/3dYCJ0F/Realme-12-Pro-Submarine-Blue-2020.jpg",
+    "sellerDetails": [
+      {
+        "name": "kabir",
+        "photo": "https://i.ibb.co.com/j68wxNh/pexels-linkedin-2182970.jpg",
+        "email": "kabir@gmail.com"
+      }
+    ]
+  },
+  {
+    "brand": "Apple",
+    "name": "iPhone 15 Pro",
+    "description": "Premium flagship with the latest A17 Bionic chip, titanium body, and advanced camera system for photography and videography.",
+    "price": 1299,
+    "category": "smartphone",
+    "stock": "5",
+    "image": "https://i.ibb.co.com/0yDjN21/i-Phone-15-Plus-2-5-1544.jpg",
+    "sellerDetails": [
+      {
+        "name": "kabir",
+        "photo": "https://i.ibb.co.com/j68wxNh/pexels-linkedin-2182970.jpg",
+        "email": "kabir@gmail.com"
+      }
+    ]
+  },
+  {
+    "brand": "Apple",
+    "name": "iPhone 15",
+    "description": "Latest iPhone with Dynamic Island, impressive battery life, and the latest innovations in design and technology.",
+    "price": 899,
+    "category": "smartphone",
+    "stock": "7",
+    "image": "https://i.ibb.co.com/zH2yTKr/i-Phone-15-Plus-6-2055.jpg",
+    "sellerDetails": [
+      {
+        "name": "kabir",
+        "photo": "https://i.ibb.co.com/j68wxNh/pexels-linkedin-2182970.jpg",
+        "email": "kabir@gmail.com"
+      }
+    ]
+  },
+  {
+    "brand": "Apple",
+    "name": "iPhone 14 Plus",
+    "description": "Large display iPhone with excellent battery life, high-quality camera, and powerful performance for all-day productivity.",
+    "price": 999,
+    "category": "smartphone",
+    "stock": "14",
+    "image": "https://i.ibb.co.com/6B4jVvT/i-Phone-14-Plus-Midnight-9457.jpg",
+    "sellerDetails": [
+      {
+        "name": "kabir",
+        "photo": "https://i.ibb.co.com/j68wxNh/pexels-linkedin-2182970.jpg",
+        "email": "kabir@gmail.com"
+      }
+    ]
+  },
+  {
+    "brand": "Apple",
+    "name": "Apple Watch Series 9",
+    "description": "Advanced smartwatch with a powerful S9 chip, always-on Retina display, enhanced health tracking, and seamless integration with the Apple ecosystem.",
+    "price": 399,
+    "category": "smartWatch",
+    "stock": "14",
+    "image": "https://i.ibb.co.com/QYpyXS9/Apple-Watch-S9-pink-aluminum-Sport-Band-pink-230912-inline-jpg-large.jpg",
+    "sellerDetails": [
+      {
+        "name": "watch",
+        "photo": "https://i.ibb.co.com/GvQRjtD/7c5e63f1-027b-42f5-8d74-56a848a6a452.png",
+        "email": "watch@gmail.com"
+      }
+    ]
+  },
+  {
+    "brand": "Samsung",
+    "name": "Galaxy Watch 6 Classic",
+    "description": "Premium smartwatch featuring a rotating bezel, AMOLED display, advanced fitness tracking, and long battery life for a seamless experience.",
+    "price": 349,
+    "category": "smartWatch",
+    "stock": "4",
+    "image": "https://i.ibb.co.com/16S6LMZ/galaxy-watch6-classic-black-43mm-001-500x500.jpg",
+    "sellerDetails": [
+      {
+        "name": "watch",
+        "photo": "https://i.ibb.co.com/GvQRjtD/7c5e63f1-027b-42f5-8d74-56a848a6a452.png",
+        "email": "watch@gmail.com"
+      }
+    ]
+  },
+  {
+    "brand": "Garmin",
+    "name": "Garmin Fenix 7X",
+    "description": "High-end multisport GPS smartwatch with rugged design, solar charging, detailed health metrics, and extensive activity tracking for outdoor enthusiasts.",
+    "price": 899,
+    "category": "smartWatch",
+    "stock": "2",
+    "image": "https://i.ibb.co.com/5B5ggF6/cf-lg-69399493-9540-4ea5-8033-b4aba04cea8f.jpg",
+    "sellerDetails": [
+      {
+        "name": "watch",
+        "photo": "https://i.ibb.co.com/GvQRjtD/7c5e63f1-027b-42f5-8d74-56a848a6a452.png",
+        "email": "watch@gmail.com"
+      }
+    ]
+  },
+  {
+    "brand": "Fitbit",
+    "name": "Fitbit Sense 2",
+    "description": "Health-focused smartwatch with advanced stress management tools, heart health insights, and sleep tracking for holistic wellness management.",
+    "price": 299,
+    "category": "smartWatch",
+    "stock": "14",
+    "image": "https://i.ibb.co.com/Drj67cB/Fitbit-Sense-2-Advanced-Health-and-Fitness-Smartwatch-6.jpg",
+    "sellerDetails": [
+      {
+        "name": "watch",
+        "photo": "https://i.ibb.co.com/GvQRjtD/7c5e63f1-027b-42f5-8d74-56a848a6a452.png",
+        "email": "watch@gmail.com"
+      }
+    ]
+  },
+  {
+    "brand": "Apple",
+    "name": "Apple MagSafe Battery Pack",
+    "description": "Compact and convenient 1460mAh power bank designed for MagSafe-compatible iPhones, offering seamless attachment and reliable on-the-go charging.",
+    "price": 99,
+    "category": "powerBank",
+    "stock": "14",
+    "image": "https://i.ibb.co.com/sWxMvqc/Apple-Mag-Safe-Battery-Pack-price-in-Bangladesh-MC-SOlution-BD-1.jpg",
+    "sellerDetails": [
+      {
+        "name": "powerBank",
+        "photo": "https://i.ibb.co.com/h7HgYjW/f1bc9332-379d-483f-a684-69bf9d6dd2ec.png",
+        "email": "powerbank@gmail.com"
+      }
+    ]
+  },
+  {
+    "brand": "Redmi",
+    "name": "Redmi Power Bank 20000mAh",
+    "description": "High-capacity power bank with dual USB output, fast charging support, and durable design, ideal for powering devices multiple times during travel.",
+    "price": 39,
+    "category": "powerBank",
+    "stock": "14",
+    "image": "https://i.ibb.co.com/31cqRyK/RM20PBB.jpg",
+    "sellerDetails": [
+      {
+        "name": "powerBank",
+        "photo": "https://i.ibb.co.com/h7HgYjW/f1bc9332-379d-483f-a684-69bf9d6dd2ec.png",
+        "email": "powerbank@gmail.com"
+      }
+    ]
+  },
+  {
+    "brand": "Samsung",
+    "name": "Samsung Wireless Power Bank 10000mAh",
+    "description": "Sleek and versatile power bank with wireless charging capabilities, USB-C fast charging support, and a premium build for Samsung devices and more.",
+    "price": 59,
+    "category": "powerBank",
+    "stock": "14",
+    "image": "https://i.ibb.co.com/58rHD5f/Samsung-25-W-Wireless-Battery-Pack-10000m-Ah-EB-U3300-XJEGUS-1-jpg.jpg",
+    "sellerDetails": [
+      {
+        "name": "powerBank",
+        "photo": "https://i.ibb.co.com/h7HgYjW/f1bc9332-379d-483f-a684-69bf9d6dd2ec.png",
+        "email": "powerbank@gmail.com"
+      }
+    ]
+  },
+  {
+    "brand": "Apple",
+    "name": "Apple AirPods Max",
+    "description": "Premium over-ear headphones with active noise cancellation, spatial audio, and a custom acoustic design for an immersive listening experience.",
+    "price": 549,
+    "category": "headphone",
+    "stock": "14",
+    "image": "https://i.ibb.co.com/hWBCgsM/sb-2-910x1155.jpg",
+    "sellerDetails": [
+      {
+        "name": "powerBank",
+        "photo": "https://i.ibb.co.com/h7HgYjW/f1bc9332-379d-483f-a684-69bf9d6dd2ec.png",
+        "email": "powerbank@gmail.com"
+      }
+    ]
+  },
+  {
+    "brand": "Redmi",
+    "name": "Redmi SonicBass Wireless Earphones",
+    "description": "Affordable wireless earphones with deep bass, noise isolation, and long battery life, perfect for everyday music and calls.",
+    "price": 29,
+    "category": "headphone",
+    "stock": "14",
+    "image": "https://i.ibb.co.com/pL3MJK1/Redmi-Sonic-Bass-Wireless-Earphone-ENC-An-Redmi-929ef-308999.jpg",
+    "sellerDetails": [
+      {
+        "name": "powerBank",
+        "photo": "https://i.ibb.co.com/h7HgYjW/f1bc9332-379d-483f-a684-69bf9d6dd2ec.png",
+        "email": "powerbank@gmail.com"
+      }
+    ]
+  },
+  {
+    "brand": "Samsung",
+    "name": "Samsung Galaxy Buds Pro",
+    "description": "True wireless earbuds with intelligent active noise cancellation, crisp sound quality, and a comfortable fit for all-day use.",
+    "price": 199,
+    "category": "headphone",
+    "stock": "14",
+    "image": "https://i.ibb.co.com/8c8dXMZ/2119-31661.jpg",
+    "sellerDetails": [
+      {
+        "name": "powerBank",
+        "photo": "https://i.ibb.co.com/h7HgYjW/f1bc9332-379d-483f-a684-69bf9d6dd2ec.png",
+        "email": "powerbank@gmail.com"
+      }
+    ]
+  }
+]
