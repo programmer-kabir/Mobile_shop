@@ -24,21 +24,20 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setLoading(false)
-    //   if (currentUser) {
-    //     axios
-    //       .post("https://trends-shop-serverr.vercel.app/jwt", {
-    //         email: currentUser?.email,
-    //       })
-    //       .then((data) => {
-    //         // console.log(data.data.token);
-    //         localStorage.setItem("access-token", data.data.token);
-            // setLoading(false);
-    //       });
-    //   } else {
-    //     localStorage.removeItem("access-token");
-    //     setLoading(false);
-    //   }
+      if (currentUser) {
+        axios
+          .post(`${import.meta.env.VITE_LOCALHOST_KEY}/jwt`, {
+            email: currentUser?.email,
+          })
+          .then((data) => {
+            // console.log(data.data.token);
+            localStorage.setItem("access-token", data.data.token);
+            setLoading(false);
+          });
+      } else {
+        localStorage.removeItem("access-token");
+        setLoading(false);
+      }
     });
     return () => {
       return unsubscribe;
@@ -57,7 +56,6 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  
   const signInWithGoogle = () => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
@@ -87,7 +85,7 @@ const AuthProvider = ({ children }) => {
     updateUserProfile,
     setLoading,
     loading,
-    signInWithGoogle
+    signInWithGoogle,
   };
   return (
     <AuthContext.Provider value={authValue}>{children}</AuthContext.Provider>
