@@ -46,7 +46,7 @@ const Dashboard = () => {
     <div className='md:col-span-3 w-full'>
     <Sidebar isSideNavVisible={isSideNavVisible} />
     </div>
-<div  className='lg:col-span-9 w-full'>
+<div  className='lg:col-span-9 w-full p-5'>
 <Outlet />
 </div>
      </div>

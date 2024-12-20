@@ -1,13 +1,17 @@
 import React from "react";
-import {
-  FaUsers,
-  FaSignOutAlt,
-} from "react-icons/fa";
+import { FaUsers, FaSignOutAlt, FaHome } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
 import { AiOutlineProduct } from "react-icons/ai";
+import useAdmin from "../../Utils/Hooks/useAdmin";
+import useBuyer from "../../Utils/Hooks/useBuyer";
+import useSeller from "../../Utils/Hooks/useSeller";
+import { RiPlayListAddLine } from "react-icons/ri";
 
 const Sidebar = ({ isSideNavVisible }) => {
+  const [isAdmin] = useAdmin();
+  const [isBuyer] = useBuyer();
+  const [isSeller] = useSeller();
   return (
     <div className="flex flex-wrap shadow h-screen border-r">
       <div
@@ -15,39 +19,94 @@ const Sidebar = ({ isSideNavVisible }) => {
           isSideNavVisible ? "" : "hidden md:flex"
         }`}
       >
-        <nav>
+        <nav className="px-5">
           <NavLink
             to="profile"
             className={({ isActive }) =>
               `block text-gray-800 py-2.5 px-4 mt-4 rounded transition duration-200 ${
-                isActive ? "bg-[#f50963] text-white" : "hover:bg-[#f50963] hover:text-white"
+                isActive
+                  ? "bg-[#f50963] text-white"
+                  : "hover:bg-[#f50963] hover:text-white"
               }`
             }
           >
             <CgProfile className="mr-2 inline" size={24} />
             My Profile
           </NavLink>
+          {/* Only Admin Access */}
+          {isAdmin && (
+            <>
+              <NavLink
+                to="manage-users"
+                className={({ isActive }) =>
+                  `block text-gray-800 py-2.5 px-4 my-3 rounded transition duration-200 ${
+                    isActive
+                      ? "bg-[#f50963] text-white"
+                      : "hover:bg-[#f50963] hover:text-white"
+                  }`
+                }
+              >
+                <FaUsers className="mr-2 inline" />
+                Manage Users
+              </NavLink>
+              <NavLink
+                to="all-products"
+                className={({ isActive }) =>
+                  `block text-gray-800 py-2.5 my-3 px-4 rounded transition duration-200 ${
+                    isActive
+                      ? "bg-[#f50963] text-white"
+                      : "hover:bg-[#f50963] hover:text-white"
+                  }`
+                }
+              >
+                <AiOutlineProduct className="mr-2 inline" />
+                Show All Products
+              </NavLink>
+            </>
+          )}
+          {/* Only Seller Access*/}
+          {isSeller && (
+            <>
+              <NavLink
+                to="my-products"
+                className={({ isActive }) =>
+                  `block text-gray-800 py-2.5 px-4 my-3 rounded transition duration-200 ${
+                    isActive
+                      ? "bg-[#f50963] text-white"
+                      : "hover:bg-[#f50963] hover:text-white"
+                  }`
+                }
+              >
+                <AiOutlineProduct className="mr-2 inline" />
+                My Products
+              </NavLink>
+              <NavLink
+                to="add-products"
+                className={({ isActive }) =>
+                  `block text-gray-800 py-2.5 my-3 px-4 rounded transition duration-200 ${
+                    isActive
+                      ? "bg-[#f50963] text-white"
+                      : "hover:bg-[#f50963] hover:text-white"
+                  }`
+                }
+              >
+                <RiPlayListAddLine className="mr-2 inline" />
+               Add Products
+              </NavLink>
+            </>
+          )}
           <NavLink
-            to="manage-users"
+            to="/"
             className={({ isActive }) =>
-              `block text-gray-800 py-2.5 px-4 my-3 rounded transition duration-200 ${
-                isActive ? "bg-[#f50963] text-white" : "hover:bg-[#f50963] hover:text-white"
+              `block text-gray-800 py-2.5 my-3 px-4 rounded transition duration-200 ${
+                isActive
+                  ? "bg-[#f50963] text-white"
+                  : "hover:bg-[#f50963] hover:text-white"
               }`
             }
           >
-            <FaUsers className="mr-2 inline" />
-            Manage Users
-          </NavLink>
-          <NavLink
-            to="all-products"
-            className={({ isActive }) =>
-              `block text-gray-800 py-2.5 px-4 rounded transition duration-200 ${
-                isActive ? "bg-[#f50963] text-white" : "hover:bg-[#f50963] hover:text-white"
-              }`
-            }
-          >
-            <AiOutlineProduct className="mr-2 inline" />
-            Show All Products
+            <FaHome className="mr-2 inline" />
+            Home
           </NavLink>
         </nav>
         <a

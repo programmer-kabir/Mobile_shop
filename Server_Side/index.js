@@ -68,6 +68,42 @@ async function run() {
       res.send(user);
     });
 
+     // Get admin
+     app.get("/users/admin/:email", verifyJWT, async (req, res) => {
+      const email = req.params.email;
+
+      if (req.decoded.email !== email) {
+        res.send({ admin: false });
+      }
+      const query = { email: email };
+      const user = await usersCollection.findOne(query);
+      const result = { admin: user?.status === "admin" };
+      res.send(result);
+    });
+     // Get Seller
+     app.get("/users/sellers/:email", verifyJWT, async (req, res) => {
+      const email = req.params.email;
+
+      if (req.decoded.email !== email) {
+        res.send({ Sellers: false });
+      }
+      const query = { email: email };
+      const user = await usersCollection.findOne(query);
+      const result = { Sellers: user?.status === "Sellers" };
+      res.send(result);
+    });
+     // Get Buyer
+     app.get("/users/buyers/:email", verifyJWT, async (req, res) => {
+      const email = req.params.email;
+
+      if (req.decoded.email !== email) {
+        res.send({ Buyers: false });
+      }
+      const query = { email: email };
+      const user = await usersCollection.findOne(query);
+      const result = { Buyers: user?.status === "Buyers" };
+      res.send(result);
+    });
     await client.db("admin").command({ ping: 1 });
     console.log("Database Connection successfully!!!");
   } catch (error) {

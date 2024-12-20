@@ -48,7 +48,7 @@ const ImageDropdown = () => {
                   </Link>
                 </li>
                 <li className="font-medium">
-                  <Link className="flex hover:text-[#398EFA] items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-[#f50963]">
+                  <Link to='dashboard/profile' className="flex hover:text-[#398EFA] items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-[#f50963]">
                     <div className="mr-3">
                       <MdOutlineDashboardCustomize className="w-6 h-6" />
                     </div>

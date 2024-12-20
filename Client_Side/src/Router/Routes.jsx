@@ -9,6 +9,10 @@ import Profile from "../Pages/Dashboard/Profile";
 import AllProducts from "../Pages/Dashboard/Admin/AllProducts";
 import SellerProducts from "../Pages/Dashboard/Seller/SellerProducts";
 import SellersEditProduct from "../Pages/Dashboard/Seller/SellersEditProduct";
+import PrivateRoute from "./PrivetRoute";
+import AdminRoute from "./AdminRoutes";
+import SellerRoutes from "./SellerRoutes";
+import AddNewProducts from "../Pages/Dashboard/Seller/AddNewProducts";
 
 export const routes = createBrowserRouter([
   {
@@ -31,7 +35,11 @@ export const routes = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Dashboard />,
+    element: (
+      <PrivateRoute>
+        <Dashboard />
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "profile",
@@ -39,17 +47,44 @@ export const routes = createBrowserRouter([
       },
       {
         path: "manage-users",
-        element: <ManegeUsers />,
+        element: (
+          <AdminRoute>
+            <ManegeUsers />
+          </AdminRoute>
+        ),
       },
       {
         path: "all-products",
-        element: <AllProducts />,
+        element: (
+          <AdminRoute>
+            <AllProducts />
+          </AdminRoute>
+        ),
       },
       {
         path: "my-products",
-        element: <SellerProducts />,
+        element: (
+          <SellerRoutes>
+            <SellerProducts />
+          </SellerRoutes>
+        ),
       },
-      { path: "edit-product/:id", element: <SellersEditProduct /> },
+      {
+        path: "edit-product/:id",
+        element: (
+          <SellerRoutes>
+            <SellersEditProduct />
+          </SellerRoutes>
+        ),
+      },
+      {
+        path: "add-products",
+        element: (
+          <SellerRoutes>
+            <AddNewProducts />
+          </SellerRoutes>
+        ),
+      },
     ],
   },
 ]);
