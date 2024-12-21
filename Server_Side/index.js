@@ -47,9 +47,39 @@ async function run() {
 
     // products
     app.get("/products", async (req, res) => {
-      const result = await productsCollection.find().toArray();
-      res.send(result);
+      const { name, brand, category, sort,page=1,limit=9 } = req.query;
+      console.log(req.query);
+      const query = {};
+      if (name) {
+        query.name = { $regex: name, $options: "i" };  
+      }
+      if (brand) {
+        query.brand = { $regex: brand, $options: "i" };  
+      }
+      if (category) {
+        query.category = { $regex: category, $options: "i" };  
+      }
+      
+      const sortOptions = sort === "asc" ? 1 : -1;
+      const pageNumber = Number(page)
+      const limitNumber = Number(limit)
+      const products = await productsCollection
+        .find(query)
+        .skip((pageNumber-1)*limitNumber)
+        .limit(limitNumber)
+        .sort({ price: sortOptions })
+        .toArray();
+      
+      const totalProducts = await productsCollection.countDocuments(query);
+      
+
+      
+      const categories = [...new Set(products.map((product) => product.category))];
+      const brands = [...new Set(products.map((product) => product.brand))];
+      
+      res.send({ products, brands, categories,totalProducts });
     });
+    
 
     // JWT
     app.post("/jwt", async (req, res) => {
