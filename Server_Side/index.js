@@ -48,92 +48,92 @@ async function run() {
 
     // products
     app.get("/products", async (req, res) => {
-      const { name, brand, category, sort,page=1,limit=9 } = req.query;
+      const { name, brand, category, sort, page = 1, limit = 9 } = req.query;
       console.log(req.query);
       const query = {};
       if (name) {
-        query.name = { $regex: name, $options: "i" };  
+        query.name = { $regex: name, $options: "i" };
       }
       if (brand) {
-        query.brand = { $regex: brand, $options: "i" };  
+        query.brand = { $regex: brand, $options: "i" };
       }
       if (category) {
-        query.category = { $regex: category, $options: "i" };  
+        query.category = { $regex: category, $options: "i" };
       }
-      
+
       const sortOptions = sort === "asc" ? 1 : -1;
-      const pageNumber = Number(page)
-      const limitNumber = Number(limit)
+      const pageNumber = Number(page);
+      const limitNumber = Number(limit);
       const products = await productsCollection
         .find(query)
-        .skip((pageNumber-1)*limitNumber)
+        .skip((pageNumber - 1) * limitNumber)
         .limit(limitNumber)
         .sort({ price: sortOptions })
         .toArray();
-      
+
       const totalProducts = await productsCollection.countDocuments(query);
-      
+      const allProducts = await productsCollection.find().toArray();
 
-      
-      const categories = [...new Set(products.map((product) => product.category))];
+      const categories = [
+        ...new Set(products.map((product) => product.category)),
+      ];
       const brands = [...new Set(products.map((product) => product.brand))];
-      
-      res.send({ products, brands, categories,totalProducts });
-    });
-    
-    app.post('/products',async(req, res) =>{
-      const data = req.body;
-      const result =  await productsCollection.insertOne(data)
-      res.send(result)
-    })
 
-    app.get('/product/:id', async(req, res) =>{
+      res.send({ products, brands, categories, totalProducts, allProducts });
+    });
+
+    app.post("/products", async (req, res) => {
+      const data = req.body;
+      const result = await productsCollection.insertOne(data);
+      res.send(result);
+    });
+
+    app.get("/product/:id", async (req, res) => {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) };
       const result = await productsCollection.findOne(query);
       res.send(result);
-    } )
-
-// Wishlist
-app.post('/wishlist', async (req, res) => {
-  const data = req.body; // Request body containing product data
-  const email = data.email; // User's email
-  const productId = data.productId; // Product ID
-  const sellerEmail = data.sellerEmail; // Seller's email
-
-  try {
-    // Check if the product already exists for the given email
-    const existingWishlistItem = await wishlistCollection.findOne({
-      email: email,
-      'products.productId': productId,
     });
 
-    if (existingWishlistItem) {
-      return res.status(400).json({
-        message: 'This product is already in your wishlist.',
-      });
-    }
+    // Wishlist
+    app.post("/wishlist", async (req, res) => {
+      const data = req.body; // Request body containing product data
+      const email = data.email; // User's email
+      const productId = data.productId; // Product ID
+      const sellerEmail = data.sellerEmail; // Seller's email
 
-    // Add product to the wishlist under the corresponding email
-    const updatedWishlist = await wishlistCollection.updateOne(
-      { email: email }, // Find wishlist by email
-      { $push: { products: { productId, sellerEmail, ...data } } }, // Add product with seller email
-      { upsert: true } // Create document if it doesn't exist
-    );
+      try {
+        // Check if the product already exists for the given email
+        const existingWishlistItem = await wishlistCollection.findOne({
+          email: email,
+          "products.productId": productId,
+        });
 
-    res.status(200).json({
-      message: 'Product added to wishlist successfully.',
-      result: updatedWishlist,
+        if (existingWishlistItem) {
+          return res.status(400).json({
+            message: "This product is already in your wishlist.",
+          });
+        }
+
+        // Add product to the wishlist under the corresponding email
+        const updatedWishlist = await wishlistCollection.updateOne(
+          { email: email }, // Find wishlist by email
+          { $push: { products: { productId, sellerEmail, ...data } } }, // Add product with seller email
+          { upsert: true } // Create document if it doesn't exist
+        );
+
+        res.status(200).json({
+          message: "Product added to wishlist successfully.",
+          result: updatedWishlist,
+        });
+      } catch (error) {
+        console.error("Error adding product to wishlist:", error);
+        res.status(500).json({ message: "Internal server error" });
+      }
     });
-  } catch (error) {
-    console.error('Error adding product to wishlist:', error);
-    res.status(500).json({ message: 'Internal server error' });
-  }
-});
 
-
-app.get('/wishlist', async(req, res) =>{
-  const email = req.query.email;
+    app.get("/wishlist", async (req, res) => {
+      const email = req.query.email;
       // console.log(email);
       if (!email) {
         res.send([]);
@@ -141,8 +141,7 @@ app.get('/wishlist', async(req, res) =>{
       const query = { email: email };
       const data = await wishlistCollection.find(query).toArray();
       res.send(data);
-})
-
+    });
 
     // JWT
     app.post("/jwt", async (req, res) => {

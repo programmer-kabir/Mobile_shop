@@ -90,6 +90,9 @@ export const routes = createBrowserRouter([
             <SellersEditProduct />
           </SellerRoutes>
         ),
+        loader: ({ params }) =>
+          fetch(`${import.meta.env.VITE_LOCALHOST_KEY}/product/${params.id}`),
+      
       },
       {
         path: "add-products",

@@ -8,7 +8,7 @@ const useProducts = () => {
     queryKey: ["products",],
     queryFn: async () => {
       const res = await axiosSecure.get("/products");
-      console.log(res.data);
+      return(res.data.allProducts);
     },
   });
   return [products, isProductsLoading];

@@ -61,7 +61,6 @@ const ManegeUsers = () => {
                       className="w-10 h-10 rounded-full"
                       alt={user?.name}
                       src={user?.photoURL}
-                      alt=""
                     />
                   </td>
                   <td class="p-4 border-b border-slate-700">
