@@ -5,7 +5,7 @@ const ProductsCard = ({
     product
 }) => {
   return (
-    <Link className="group relative block overflow-hidden border border-gray-100 rounded-md">
+    <div className="group relative block overflow-hidden border border-gray-100 rounded-md">
       <img
         src={product?.image}
         alt=""
@@ -25,17 +25,18 @@ const ProductsCard = ({
         <h3 className="mt-1.5 text-base font-medium text-gray-900">
           Stock: {product?.stock}
         </h3>
-        <p className="mt-1.5 line-clamp-3 text-gray-700">
+        <p className="mt-1.5 line-clamp-3 text-gray-700 mb-5">
           {product.description}
         </p>
 
-        <form className="mt-4 flex gap-4">
-          <button className="block w-full rounded bg-[#f50963] px-4 py-3  font-medium text-gray-50 transition hover:scale-105">
-            Add to Cart
-          </button>
-        </form>
+     
+         <Link to={`/product/detailsProduct/${product._id}`}>
+         <button className="block w-full rounded bg-[#f50963] px-4 py-3  font-medium text-gray-50 transition hover:scale-105">
+            Details
+          </button></Link>
+       
       </div>
-    </Link>
+    </div>
   );
 };
 

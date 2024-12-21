@@ -14,6 +14,7 @@ import AdminRoute from "./AdminRoutes";
 import SellerRoutes from "./SellerRoutes";
 import AddNewProducts from "../Pages/Dashboard/Seller/AddNewProducts";
 import Products from "../Pages/Products";
+import DetailsProduct from "../Pages/DetailsProduct";
 
 export const routes = createBrowserRouter([
   {
@@ -27,6 +28,12 @@ export const routes = createBrowserRouter([
       {
         path: "/product",
         element: <Products />,
+      },
+      {
+        path: "/product/detailsProduct/:id",
+        element: <DetailsProduct />,
+        loader: ({ params }) =>
+          fetch(`${import.meta.env.VITE_LOCALHOST_KEY}/product/${params.id}`),
       },
       {
         path: "/signup",

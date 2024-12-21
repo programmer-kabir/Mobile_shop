@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
-const { MongoClient, ServerApiVersion } = require("mongodb");
+const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const app = express();
 const port = process.env.PORT || 3000;
 const jwt = require("jsonwebtoken");
@@ -44,6 +44,7 @@ async function run() {
     // MongoDb Apis
     const usersCollection = client.db("MobileShop").collection("users");
     const productsCollection = client.db("MobileShop").collection("products");
+    const wishlistCollection = client.db("MobileShop").collection("wishlist");
 
     // products
     app.get("/products", async (req, res) => {
@@ -80,6 +81,19 @@ async function run() {
       res.send({ products, brands, categories,totalProducts });
     });
     
+    app.get('/product/:id', async(req, res) =>{
+      const id = req.params.id;
+      console.log(id);
+      const query = { _id: new ObjectId(id) };
+      const result = await productsCollection.findOne(query);
+      res.send(result);
+    } )
+
+    // Wishlist
+app.post('/wishlist', async(req, res) =>{
+  const data = req.body;
+})
+
 
     // JWT
     app.post("/jwt", async (req, res) => {
