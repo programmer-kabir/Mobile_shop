@@ -25,3 +25,12 @@
       transition: all 0.3s ease-in-out; /* Shorter duration for hover effect */
     }
     
+    .clip-style {
+      clip-path: polygon(20% 0, 100% 0, 80% 100%, 0% 100%);
+      border: none;
+      transition: all 0.3s ease-in-out;
+    }
+    
+    .half-red-half-white {
+      background-image: linear-gradient(to right, 
+      #F50963 50%, rgb(133, 234, 133) 50%);}
