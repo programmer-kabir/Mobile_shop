@@ -13,6 +13,8 @@ const DetailsProduct = () => {
   const currentUser = users.find(
     (loggedUser) => loggedUser?.email == user?.email
   );
+  const isBuyer = currentUser?.status === "Buyers";
+
   const data = useLoaderData();
   const Navigate = useNavigate();
   const handleWishlist = (id) => {
@@ -89,12 +91,17 @@ console.log(wishlistData);
             <span className="font-medium">Description:</span> {data.description}
           </p>
 
-          <button
-            onClick={() => handleWishlist(data._id)}
-            className="block w-full mt-7 rounded bg-[#f50963] px-4 py-3  font-medium text-gray-50 transition hover:scale-105"
-          >
-            Add to Cart
-          </button>
+          {isBuyer && (
+            <button
+              onClick={() => handleWishlist(data._id)}
+              className="block w-full mt-7 rounded bg-[#f50963] px-4 py-3 font-medium text-gray-50 transition hover:scale-105"
+            >
+              Add to Cart
+            </button>
+          )}
+            {!isBuyer && user && (
+            <p className="mt-4 text-red-500">Admins And Seller cannot add items to the cart.</p>
+          )}
         </div>
       </div>
     </div>
