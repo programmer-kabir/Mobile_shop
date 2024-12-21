@@ -30,9 +30,19 @@ const DetailsProduct = () => {
         }
       });
     }
-    const myData = { productId: id, email:user?.email ,sellerEmail:data.sellerDetails[0].email };
+    const wishlistData = {
+      productId: data._id,          
+      email: user.email,           
+      sellerEmail: data.sellerDetails[0].email, 
+      name: data.name,           
+      price: data.price,
+      image:data.image,
+      stock:data.stock,
+      brand:data.brand
+    };
+console.log(wishlistData);
     axios
-      .post(`${import.meta.env.VITE_LOCALHOST_KEY}/wishlist`, myData)
+      .post(`${import.meta.env.VITE_LOCALHOST_KEY}/wishlist`, wishlistData)
       .then((res) => {
         console.log(res.data);
         toast.success(res.data.message);
