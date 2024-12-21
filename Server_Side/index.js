@@ -49,7 +49,7 @@ async function run() {
     // products
     app.get("/products", async (req, res) => {
       const { name, brand, category, sort, page = 1, limit = 9 } = req.query;
-      console.log(req.query);
+      // console.log(req.query);
       const query = {};
       if (name) {
         query.name = { $regex: name, $options: "i" };
@@ -93,6 +93,28 @@ async function run() {
       const query = { _id: new ObjectId(id) };
       const result = await productsCollection.findOne(query);
       res.send(result);
+    });
+
+    app.patch("/product/:id", async (req, res) => {
+      const { id } = req.params;
+      console.log(id);
+      const data = req.body;
+      if (!id || !data) {
+        return res
+          .status(400)
+          .json({ success: false, message: "Invalid request data" });
+      }
+      const query = new ObjectId(id);
+      const updatedProduct = await productsCollection.findOneAndUpdate(
+        { _id: new ObjectId(id) },
+        { $set: data }
+      );
+      if (!updatedProduct) {
+        return res
+          .status(404)
+          .json({ success: false, message: "Product not found" });
+      }
+      res.json({ success: true, message: "Product updated successfully", product: updatedProduct });
     });
 
     // Wishlist
