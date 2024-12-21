@@ -47,7 +47,7 @@ const AboutUs = () => {
                   We believe in integrity, quality, and customer satisfaction.
                   Our team strives to innovate and improve continuously,
                   ensuring that our customers receive the best possible
-                  experience every time they shop with us.
+                  experience every time they shop with us .
                 </p>
               </div>
             </div>
