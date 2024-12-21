@@ -15,6 +15,8 @@ import SellerRoutes from "./SellerRoutes";
 import AddNewProducts from "../Pages/Dashboard/Seller/AddNewProducts";
 import Products from "../Pages/Products";
 import DetailsProduct from "../Pages/DetailsProduct";
+import BuyerRoutes from "./BuyerRoutes";
+import Wishlist from "../Pages/Dashboard/Buyer/Wishlist";
 
 export const routes = createBrowserRouter([
   {
@@ -95,6 +97,22 @@ export const routes = createBrowserRouter([
           <SellerRoutes>
             <AddNewProducts />
           </SellerRoutes>
+        ),
+      },
+      {
+        path: "add-products",
+        element: (
+          <SellerRoutes>
+            <AddNewProducts />
+          </SellerRoutes>
+        ),
+      },
+      {
+        path: "wishlist",
+        element: (
+          <BuyerRoutes>
+            <Wishlist />
+          </BuyerRoutes>
         ),
       },
     ],

@@ -7,7 +7,7 @@ import useAdmin from "../../Utils/Hooks/useAdmin";
 import useBuyer from "../../Utils/Hooks/useBuyer";
 import useSeller from "../../Utils/Hooks/useSeller";
 import { RiPlayListAddLine } from "react-icons/ri";
-
+import { FaRegHeart } from "react-icons/fa6";
 const Sidebar = ({ isSideNavVisible }) => {
   const [isAdmin] = useAdmin();
   const [isBuyer] = useBuyer();
@@ -31,7 +31,7 @@ const Sidebar = ({ isSideNavVisible }) => {
             }
           >
             <CgProfile className="mr-2 inline" size={24} />
-            My Profile
+            My Overview
           </NavLink>
           {/* Only Admin Access */}
           {isAdmin && (
@@ -93,6 +93,24 @@ const Sidebar = ({ isSideNavVisible }) => {
                 <RiPlayListAddLine className="mr-2 inline" />
                Add Products
               </NavLink>
+            </>
+          )}
+          {isBuyer && (
+            <>
+              <NavLink
+                to="wishlist"
+                className={({ isActive }) =>
+                  `block text-gray-800 py-2.5 px-4 my-3 rounded transition duration-200 ${
+                    isActive
+                      ? "bg-[#f50963] text-white"
+                      : "hover:bg-[#f50963] hover:text-white"
+                  }`
+                }
+              >
+                <FaRegHeart className="mr-2 inline" />
+                My WishList
+              </NavLink>
+             
             </>
           )}
           <NavLink

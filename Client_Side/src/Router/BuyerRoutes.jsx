@@ -13,7 +13,7 @@ const BuyerRoutes = ({ children }) => {
     return <Loader />;
   }
 
-  if (user && isBuyerLoading) {
+  if (user && isBuyer) {
     return children;
   }
   return <Navigate to="/" state={{ from: location }} replace></Navigate>;

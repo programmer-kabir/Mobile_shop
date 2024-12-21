@@ -1,18 +1,49 @@
 import React from "react";
-import { useLoaderData, useParams } from "react-router-dom";
-import useProducts from "../Utils/Hooks/useProducts";
+import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import useAuth from "../Utils/Hooks/useAuth";
 import useAllUsers from "../Utils/Hooks/useAllUsers";
+import Swal from "sweetalert2";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const DetailsProduct = () => {
-    const {user} = useAuth()
-    const [users,loading] = useAllUsers()
-    
-    const currentUser = users.find(loggedUser =>loggedUser.email==user.email)
+  const { user } = useAuth();
+  const [users, loading] = useAllUsers();
+
+  const currentUser = users.find(
+    (loggedUser) => loggedUser?.email == user?.email
+  );
   const data = useLoaderData();
-const handleWishlist = id =>{
-    
-}
+  const Navigate = useNavigate();
+  const handleWishlist = (id) => {
+    if (!user) {
+      Swal.fire({
+        title: "Please Signin Now",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, Signin!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Navigate("/signin");
+        }
+      });
+    }
+    const myData = { productId: id, email:user?.email ,sellerEmail:data.sellerDetails[0].email };
+    axios
+      .post(`${import.meta.env.VITE_LOCALHOST_KEY}/wishlist`, myData)
+      .then((res) => {
+        console.log(res.data);
+        toast.success(res.data.message);
+      })
+      .catch((error) => {
+        console.log(error.message);
+        if (error.message == "Request failed with status code 400") {
+          toast.error("Your product is al ready added");
+        }
+      });
+  };
   return (
     <div className="pt-16">
       <div className="max-w-xl border border-gray-200 mx-auto">
@@ -47,8 +78,11 @@ const handleWishlist = id =>{
           <p className="font-normal pt-3">
             <span className="font-medium">Description:</span> {data.description}
           </p>
-          
-         <button className="block w-full mt-7 rounded bg-[#f50963] px-4 py-3  font-medium text-gray-50 transition hover:scale-105">
+
+          <button
+            onClick={() => handleWishlist(data._id)}
+            className="block w-full mt-7 rounded bg-[#f50963] px-4 py-3  font-medium text-gray-50 transition hover:scale-105"
+          >
             Add to Cart
           </button>
         </div>

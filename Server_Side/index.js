@@ -83,15 +83,58 @@ async function run() {
     
     app.get('/product/:id', async(req, res) =>{
       const id = req.params.id;
-      console.log(id);
       const query = { _id: new ObjectId(id) };
       const result = await productsCollection.findOne(query);
       res.send(result);
     } )
 
-    // Wishlist
-app.post('/wishlist', async(req, res) =>{
-  const data = req.body;
+// Wishlist
+app.post('/wishlist', async (req, res) => {
+  const data = req.body; // Request body containing product data
+  const email = data.email; // User's email
+  const productId = data.productId; // Product ID
+  const sellerEmail = data.sellerEmail; // Seller's email
+
+  try {
+    // Check if the product already exists for the given email
+    const existingWishlistItem = await wishlistCollection.findOne({
+      email: email,
+      'products.productId': productId,
+    });
+
+    if (existingWishlistItem) {
+      return res.status(400).json({
+        message: 'This product is already in your wishlist.',
+      });
+    }
+
+    // Add product to the wishlist under the corresponding email
+    const updatedWishlist = await wishlistCollection.updateOne(
+      { email: email }, // Find wishlist by email
+      { $push: { products: { productId, sellerEmail, ...data } } }, // Add product with seller email
+      { upsert: true } // Create document if it doesn't exist
+    );
+
+    res.status(200).json({
+      message: 'Product added to wishlist successfully.',
+      result: updatedWishlist,
+    });
+  } catch (error) {
+    console.error('Error adding product to wishlist:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+
+app.get('/wishlist', async(req, res) =>{
+  const email = req.query.email;
+      // console.log(email);
+      if (!email) {
+        res.send([]);
+      }
+      const query = { email: email };
+      const data = await wishlistCollection.find(query).toArray();
+      res.send(data);
 })
 
 
