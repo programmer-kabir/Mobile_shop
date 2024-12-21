@@ -17,6 +17,8 @@ import Products from "../Pages/Products";
 import DetailsProduct from "../Pages/DetailsProduct";
 import BuyerRoutes from "./BuyerRoutes";
 import Wishlist from "../Pages/Dashboard/Buyer/Wishlist";
+import AboutUs from "../Pages/AboutUs";
+import ContactUs from "../Pages/ContactUs";
 
 export const routes = createBrowserRouter([
   {
@@ -44,6 +46,14 @@ export const routes = createBrowserRouter([
       {
         path: "/signin",
         element: <Signin />,
+      },
+      {
+        path: "/about",
+        element: <AboutUs />,
+      },
+      {
+        path: "/contact",
+        element: <ContactUs />,
       },
     ],
   },

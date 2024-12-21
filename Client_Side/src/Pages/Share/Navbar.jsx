@@ -53,29 +53,13 @@ const Navbar = () => {
             <div className="md:flex hidden items-center space-x-5 font-medium">
               <NavLink to='/'>Home</NavLink>
               <NavLink to='/product'>Products</NavLink>
-              <NavLink>About</NavLink>
-              <NavLink>Contact </NavLink>
+              <NavLink to='/about'>About</NavLink>
+              <NavLink to='/contact'>Contact </NavLink>
             </div>
             {/* User And Admin Dashobard Button */}
             <div className="md:flex hidden items-center justify-center gap-3">
               {user ? (
                 <>
-                  {user[0]?.role === "admin" ? (
-                    <Link to="admin/dashboard">
-                      <div className="secondaryColor">
-                        <MdDashboard size={22} />
-                      </div>
-                    </Link>
-                  ) : (
-                    <>
-                      <Link to="user/dashboard">
-                        <div className="secondaryColor">
-                          <MdDashboard size={22} />
-                        </div>
-                      </Link>
-                    </>
-                  )}
-
                   <ImageDropdown />
                 </>
               ) : (
