@@ -81,6 +81,12 @@ async function run() {
       res.send({ products, brands, categories,totalProducts });
     });
     
+    app.post('/products',async(req, res) =>{
+      const data = req.body;
+      const result =  await productsCollection.insertOne(data)
+      res.send(result)
+    })
+
     app.get('/product/:id', async(req, res) =>{
       const id = req.params.id;
       const query = { _id: new ObjectId(id) };
