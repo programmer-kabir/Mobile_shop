@@ -37,16 +37,8 @@ const ImageDropdown = () => {
           </div>
           </div>
           {open && (
-            <div className="absolute w-60 right-2 px-5 py-3  bg-white rounded-lg shadow border  mt-3">
+            <div className="absolute w-60 -right-20 md:right-2 px-5 py-3  bg-white rounded-lg shadow border  mt-3">
               <ul className="space-y-3 text-black">
-                <li className="font-medium">
-                  <Link className="flex hover:text-[#398EFA] items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-[#f50963]">
-                    <div className="mr-3">
-                      <FaRegUser className="w-6 h-6" />
-                    </div>
-                    Account
-                  </Link>
-                </li>
                 <li className="font-medium">
                   <Link to='dashboard/profile' className="flex hover:text-[#398EFA] items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-[#f50963]">
                     <div className="mr-3">

@@ -11,17 +11,17 @@ import { FreeMode, Pagination } from "swiper/modules";
 import Container from "../Container/Container";
 import Title from "../Title";
 import useProducts from "../../Utils/Hooks/useProducts";
+import Loader from "../../Pages/Loader";
 
 const Brands = () => {
-  const [products] = useProducts();
+  const [products,isProductsLoading] = useProducts();
   const [activeTab, setActiveTab] = useState("Apple");
   const tabs = ["Apple", "Samsung", "Redmi", "Realme"];
 
   const handleTabChange = (event) => {
     setActiveTab(event.target.value);
   };
-  console.log(products);
-  const currentData = products.filter((product) => product.brand == activeTab);
+  const currentData = products?.filter((product) => product.brand == activeTab);
 
   return (
     <Container>
@@ -86,39 +86,41 @@ const Brands = () => {
             modules={[Pagination]}
             className="mySwiper mt-5"
           >
-            {currentData.map((product) => (
-              <SwiperSlide key={product._id}>
-                 <div className="group relative block overflow-hidden border border-gray-100 rounded-md">
-      <img
-        src={product?.image}
-        alt=""
-        className="h-48 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-48"
-      />
-
-      <div className="relative border border-gray-100 bg-white p-4">
-        <p className="text-gray-700">${product?.price}</p>
-
-        <h3 className="mt-1.5 text-lg font-medium text-gray-900">
-          {product?.name}
-        </h3>
-        <h3 className="mt-1.5  text-gray-800">
-          {product?.category}
-        </h3>
-
-        <h3 className="mt-1.5 text-base font-medium text-gray-900">
-          Stock: {product?.stock}
-        </h3>
-        <p className="mt-1.5 line-clamp-3 text-gray-700 mb-5">
-          {product.description}
-        </p>
-
-     
-    
+            {
+              isProductsLoading ? <Loader/>:currentData.map((product) => (
+                <SwiperSlide key={product._id}>
+                   <div className="group relative block overflow-hidden border border-gray-100 rounded-md">
+        <img
+          src={product?.image}
+          alt=""
+          className="h-48 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-48"
+        />
+  
+        <div className="relative border border-gray-100 bg-white p-4">
+          <p className="text-gray-700">${product?.price}</p>
+  
+          <h3 className="mt-1.5 text-lg font-medium text-gray-900">
+            {product?.name}
+          </h3>
+          <h3 className="mt-1.5  text-gray-800">
+            {product?.category}
+          </h3>
+  
+          <h3 className="mt-1.5 text-base font-medium text-gray-900">
+            Stock: {product?.stock}
+          </h3>
+          <p className="mt-1.5 line-clamp-3 text-gray-700 mb-5">
+            {product.description}
+          </p>
+  
        
+      
+         
+        </div>
       </div>
-    </div>
-              </SwiperSlide>
-            ))}
+                </SwiperSlide>
+              ))}
+            
           </Swiper>
         </div>
       </div>

@@ -12,6 +12,7 @@ const Sidebar = ({ isSideNavVisible }) => {
   const [isAdmin] = useAdmin();
   const [isBuyer] = useBuyer();
   const [isSeller] = useSeller();
+  
   return (
     <div className="flex flex-wrap shadow h-screen border-r">
       <div
@@ -127,13 +128,7 @@ const Sidebar = ({ isSideNavVisible }) => {
             Home
           </NavLink>
         </nav>
-        <a
-          href="#"
-          className="block text-gray-500 py-2.5 px-4 my-2 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white mt-auto"
-        >
-          <FaSignOutAlt className="mr-2 inline" />
-          Cerrar sesión
-        </a>
+      
       </div>
     </div>
   );

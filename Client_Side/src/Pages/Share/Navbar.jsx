@@ -113,22 +113,6 @@ const Navbar = () => {
                   <div className="flex  items-center justify-center gap-3 border-b w-full pb-2">
                     {user ? (
                       <>
-                        {user[0]?.role === "admin" ? (
-                          <Link to="admin/dashboard">
-                            <div className="secondaryColor">
-                              <MdDashboard size={22} />
-                            </div>
-                          </Link>
-                        ) : (
-                          <>
-                            <Link to="user/dashboard">
-                              <div className="secondaryColor">
-                                <MdDashboard size={22} />
-                              </div>
-                            </Link>
-                          </>
-                        )}
-
                         <ImageDropdown />
                       </>
                     ) : (
@@ -145,16 +129,16 @@ const Navbar = () => {
                     )}
                   </div>
 
-                  <NavLink className="border-b py-2 flex flex-col justify-center items-center w-full ">
+                  <NavLink to='/' className="border-b py-2 flex flex-col justify-center items-center w-full ">
                     Home
                   </NavLink>
-                  <NavLink className="border-b py-2 flex flex-col justify-center items-center w-full ">
+                  <NavLink to='/product' className="border-b py-2 flex flex-col justify-center items-center w-full ">
                     Products
                   </NavLink>
-                  <NavLink className="border-b py-2 flex flex-col justify-center items-center w-full">
+                  <NavLink to='/about' className="border-b py-2 flex flex-col justify-center items-center w-full">
                     About
                   </NavLink>
-                  <NavLink className="border-b py-2 flex flex-col justify-center items-center w-full">
+                  <NavLink to='/contact' className="border-b py-2 flex flex-col justify-center items-center w-full">
                     Contact{" "}
                   </NavLink>
                 </div>

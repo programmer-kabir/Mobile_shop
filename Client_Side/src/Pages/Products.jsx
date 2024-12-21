@@ -67,13 +67,13 @@ if(newPage>0&& newPage <= totalPages){
           All Products
         </h2>
         {/* Search and price */}
-        <div className="flex items-center justify-between border border-gray-200 py-4 px-5">
+        <div className="md:flex items-center justify-between border border-gray-200 py-4 px-5 space-y-5 md:space-y-0">
           <SearchBar handleSearch={handleSearch} />
           <ShortPrice setSort={setSort} />
         </div>
         {/* Content */}
         <div className="grid grid-cols-12 pt-7 border-r gap-7">
-          <div className="col-span-3 px-2 h-screen">
+          <div className="md:col-span-3 col-span-12 px-2 md:h-screen">
             <FilterBar
               setCategory={setCategory}
               setBrand={setBrand}
@@ -82,7 +82,7 @@ if(newPage>0&& newPage <= totalPages){
               uniqueCategory={uniqueCategory}
             />
           </div>
-          <div className="col-span-9">
+          <div className="md:col-span-9 col-span-12">
             {loading ? (
               <Loader />
             ) : (
@@ -95,7 +95,7 @@ if(newPage>0&& newPage <= totalPages){
                     </div>
                   </div>
                 ) : (
-                  <div className="min-h-screen grid grid-cols-3 gap-4">
+                  <div className="min-h-screen grid grid-cols-1 lg:grid-cols-3 gap-4">
                     {products.map((product) => (
                       <ProductsCard key={product._id} product={product} />
                     ))}
